@@ -31,5 +31,13 @@ describe("Test Suit", function () {
         cy.get('[value="radio2"').check()
         cy.get('[value="radio2"').should('be.checked')
 
+        //ALerts and Confirmations
+        cy.get('#alertbtn').click()
+        cy.get('input[value="Confirm"]').click()
+        //Event
+        cy.on('window:alert', (str) => {
+            //Mocha
+            expect(str).to.be.equal('Hello , share this practice page and share your knowledge')
+        })
     })
 })
